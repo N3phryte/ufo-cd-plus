@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcbae3ss17tou"]
+
+[ext_resource type="Texture2D" uid="uid://baam4civsfu87" path="res://sprites/Player.png" id="2_gndvh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6vqvp"]
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_6vqvp")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+fov = 80.0
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_gndvh")

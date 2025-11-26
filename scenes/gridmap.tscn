@@ -1,0 +1,84 @@
+[gd_scene load_steps=14 format=3 uid="uid://dkc1xhs3sx6i5"]
+
+[ext_resource type="Texture2D" uid="uid://cvj7qjnqa13wd" path="res://sprites/textures/GrassEdge.png" id="1_ykufx"]
+[ext_resource type="Texture2D" uid="uid://q4dqqep2atyb" path="res://sprites/textures/GrassEdgeCorner.png" id="2_oppen"]
+[ext_resource type="Texture2D" uid="uid://c5tjk5s2183oc" path="res://sprites/textures/GrassEdgeInnerCorner.png" id="3_f4w8n"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f74p4"]
+load_path = "res://.godot/imported/Grass.png-2e44ebe27133c2781f315ccbdaffd946.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62pex"]
+albedo_texture = SubResource("CompressedTexture2D_f74p4")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ykufx"]
+material = SubResource("StandardMaterial3D_62pex")
+size = Vector2(3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oppen"]
+size = Vector3(3, 0.001, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ck5gn"]
+albedo_texture = ExtResource("1_ykufx")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hm7gr"]
+material = SubResource("StandardMaterial3D_ck5gn")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skoy4"]
+albedo_texture = ExtResource("2_oppen")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f1n5k"]
+material = SubResource("StandardMaterial3D_skoy4")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0baki"]
+albedo_texture = ExtResource("3_f4w8n")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xdicb"]
+material = SubResource("StandardMaterial3D_0baki")
+size = Vector2(3, 3)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Grass" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ykufx")
+skeleton = NodePath("StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grass"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass/StaticBody3D"]
+shape = SubResource("BoxShape3D_oppen")
+
+[node name="GrassEdge" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+mesh = SubResource("PlaneMesh_hm7gr")
+skeleton = NodePath("StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="GrassEdge"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrassEdge/StaticBody3D"]
+shape = SubResource("BoxShape3D_oppen")
+
+[node name="GrassCorner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+mesh = SubResource("PlaneMesh_f1n5k")
+skeleton = NodePath("StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="GrassCorner"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrassCorner/StaticBody3D"]
+shape = SubResource("BoxShape3D_oppen")
+
+[node name="GrassInnerCorner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+mesh = SubResource("PlaneMesh_xdicb")
+skeleton = NodePath("StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="GrassInnerCorner"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrassInnerCorner/StaticBody3D"]
+shape = SubResource("BoxShape3D_oppen")
