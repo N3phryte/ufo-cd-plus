@@ -48,8 +48,7 @@ const port : int = 7000 # Default port
 ## The lobby data that a Steam lobby should be created with.
 var steam_lobby_data = {
 	"name": "UFO-CD Lobby",
-	"game": "DEFAULTSCENE",
-	"key": "UFO-CD" # MUST BE UNIQUE
+	"game": "UFO-CD",
 }
 
 ## The lobby id of the Steam lobby

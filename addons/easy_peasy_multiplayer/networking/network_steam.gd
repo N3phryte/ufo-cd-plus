@@ -30,7 +30,7 @@ func join_as_client():
 func list_lobbies():
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
 
-	Steam.addRequestLobbyListStringFilter("key", "UFO-CD", Steam.LOBBY_COMPARISON_EQUAL)
+	Steam.addRequestLobbyListStringFilter("game", "UFO-CD", Steam.LOBBY_COMPARISON_EQUAL)
 	
 	Steam.requestLobbyList()
 #endregion

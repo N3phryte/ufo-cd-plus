@@ -27,7 +27,8 @@ func _init() -> void:
 func _ready() -> void:
 	#Steam.get_auth_session_ticket_response.connect(_on_get_auth_session_ticket_response)
 	#Steam.validate_auth_ticket_response.connect(_on_validate_auth_ticket_response)
-	initialize_steam()
+	#initialize_steam()
+	pass
 
 func _process(_delta: float) -> void:
 	Steam.run_callbacks()

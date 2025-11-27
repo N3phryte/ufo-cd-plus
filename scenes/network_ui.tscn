@@ -27,6 +27,7 @@ layout_mode = 2
 text = "Enet"
 
 [node name="Steam" type="Button" parent="NetworkTab"]
+visible = false
 layout_mode = 2
 text = "Steam"
 
@@ -123,6 +124,7 @@ text = "Start Game
 [connection signal="pressed" from="EnetConnectTab/Join" to="." method="_on_join_enet_pressed"]
 [connection signal="pressed" from="EnetConnectTab/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="EnetConnectTab/Back" to="." method="_on_back_to_main_pressed"]
+[connection signal="text_changed" from="EnetConnectTab/Username" to="." method="_on_username_text_changed"]
 [connection signal="pressed" from="SteamLobbyBrowser/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="SteamLobbyBrowser/Back" to="." method="_on_back_to_main_pressed"]
 [connection signal="pressed" from="LobbyTab/Disconnect" to="." method="_on_back_to_main_pressed"]

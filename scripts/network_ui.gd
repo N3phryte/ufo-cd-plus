@@ -102,3 +102,6 @@ func _update_lobby_info(_opt_peer_id: int = 0, _opt_player_info: Dictionary = {}
 func _on_start_game_pressed() -> void:
 	if Network.is_host:
 		Network.start_game("res://scenes/Debug.tscn")
+
+func _on_username_text_changed(new_text: String) -> void:
+	Network.player_info.name = new_text

@@ -1,14 +1,39 @@
-[gd_scene load_steps=12 format=3 uid="uid://pytpgjfas1eb"]
+[gd_scene load_steps=17 format=3 uid="uid://pytpgjfas1eb"]
 
 [ext_resource type="Script" uid="uid://c2dxcov45kay1" path="res://scripts/multiplayer_game_handler.gd" id="1_kcwon"]
-[ext_resource type="Material" uid="uid://ctf7mnjtsc101" path="res://materials/SpecialSky.tres" id="2_kerke"]
+[ext_resource type="Shader" uid="uid://ch1kofw3nejr5" path="res://shaders/Sky.gdshader" id="2_yv4g4"]
+[ext_resource type="Texture2D" uid="uid://qb1id5jke0xg" path="res://sprites/textures/EncoreWaterBG.png" id="3_001vm"]
+[ext_resource type="Texture2D" uid="uid://mn6tmcjispgb" path="res://sprites/palettes/StandardPalette.png" id="4_wwd4e"]
+[ext_resource type="Texture2D" uid="uid://c4ermoyihbxgp" path="res://sprites/palettes/TrianglePalette.png" id="5_htihl"]
 [ext_resource type="Shader" uid="uid://bsjjos6cdogsc" path="res://shaders/Water.gdshader" id="6_001vm"]
-[ext_resource type="Texture2D" uid="uid://diseuc5fm8rr3" path="res://sprites/textures/Water.png" id="7_wwd4e"]
+[ext_resource type="Texture2D" uid="uid://dymybymflst3b" path="res://sprites/textures/TriangleSky.png" id="6_adp0r"]
+[ext_resource type="Texture2D" uid="uid://33pvk8brmwkt" path="res://sprites/textures/encore/Water.png" id="8_e6mlf"]
 [ext_resource type="MeshLibrary" uid="uid://dje7eu85knm0s" path="res://objects/gridmap.tres" id="9_16b51"]
 [ext_resource type="AudioStream" uid="uid://dpm7acxl5b48n" path="res://soundfx/music/special_stage_megabaz.ogg" id="10_yv4g4"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o0ydb"]
+render_priority = 0
+shader = ExtResource("2_yv4g4")
+shader_parameter/horizon_height = 6.0
+shader_parameter/sky_size = Vector2(5, 5)
+shader_parameter/sky_texture = ExtResource("6_adp0r")
+shader_parameter/horizon_texture = ExtResource("3_001vm")
+shader_parameter/lock_aspect = false
+shader_parameter/aspect_ratio = 1.3333333
+shader_parameter/fov = Vector2(180, 90)
+shader_parameter/tiling = Vector2i(1, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/tilt_force = 2400.0
+shader_parameter/tilt_speed = 0.3
+shader_parameter/source_color_count = 16
+shader_parameter/color_speed = 0.4
+shader_parameter/sky_palette_in = ExtResource("4_wwd4e")
+shader_parameter/sky_palette_out = ExtResource("5_htihl")
+shader_parameter/triplanar_blend_sharpness = 0.5
+shader_parameter/triplanar_texture_scale = Vector3(1, 1, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_b1f3y"]
-material = ExtResource("2_kerke")
+material = SubResource("ShaderMaterial_o0ydb")
 flip_faces = true
 top_radius = 512.0
 bottom_radius = 512.0
@@ -18,7 +43,7 @@ height = 512.0
 render_priority = 0
 shader = ExtResource("6_001vm")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("7_wwd4e")
+shader_parameter/texture_albedo = ExtResource("8_e6mlf")
 shader_parameter/distance_fade_min = 511.999988555776
 shader_parameter/distance_fade_max = 127.999997138944
 shader_parameter/albedo_texture_size = Vector2i(32, 32)

@@ -1,14 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkc1xhs3sx6i5"]
+[gd_scene load_steps=15 format=3 uid="uid://dkc1xhs3sx6i5"]
 
 [ext_resource type="Texture2D" uid="uid://cvj7qjnqa13wd" path="res://sprites/textures/GrassEdge.png" id="1_ykufx"]
 [ext_resource type="Texture2D" uid="uid://q4dqqep2atyb" path="res://sprites/textures/GrassEdgeCorner.png" id="2_oppen"]
 [ext_resource type="Texture2D" uid="uid://c5tjk5s2183oc" path="res://sprites/textures/GrassEdgeInnerCorner.png" id="3_f4w8n"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f74p4"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ykufx"]
 load_path = "res://.godot/imported/Grass.png-2e44ebe27133c2781f315ccbdaffd946.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62pex"]
-albedo_texture = SubResource("CompressedTexture2D_f74p4")
+albedo_texture = SubResource("CompressedTexture2D_ykufx")
 texture_filter = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ykufx"]
@@ -40,6 +40,9 @@ texture_filter = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xdicb"]
 material = SubResource("StandardMaterial3D_0baki")
+size = Vector2(3, 3)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oppen"]
 size = Vector2(3, 3)
 
 [node name="Node3D" type="Node3D"]
@@ -81,4 +84,14 @@ skeleton = NodePath("StaticBody3D")
 [node name="StaticBody3D" type="StaticBody3D" parent="GrassInnerCorner"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GrassInnerCorner/StaticBody3D"]
+shape = SubResource("BoxShape3D_oppen")
+
+[node name="Road" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+mesh = SubResource("PlaneMesh_oppen")
+skeleton = NodePath("StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Road"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Road/StaticBody3D"]
 shape = SubResource("BoxShape3D_oppen")

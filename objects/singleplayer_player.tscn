@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://baam4civsfu87" path="res://sprites/Player.png" id="2_gndvh"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6vqvp"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tkhy0"]
 
 [node name="Player" type="CharacterBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_6vqvp")
+shape = SubResource("CylinderShape3D_tkhy0")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)

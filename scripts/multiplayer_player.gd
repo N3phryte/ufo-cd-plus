@@ -1,6 +1,7 @@
 class_name NetworkPlayerEntity extends CharacterBody3D
 
 @onready var camera = $Camera3D
+@onready var label = $Label3D
 
 @export var mouse_sens: float = 0.003
 @export var friction: float = 4
@@ -26,7 +27,7 @@ var time_since_boost: int = 0
 func _ready():
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
 		camera.current = true
-		$Label3D.text = name
+		label.text = Network.player_info.name
 
 
 func _input(event: InputEvent) -> void:
@@ -103,13 +104,15 @@ func air_move(delta):
 	velocity.y -= gravity * delta
 
 func ground_move(delta):
+	if $MultiplayerSynchronizer.get_multiplayer_authority() != multiplayer.get_unique_id(): return
+	
 	floor_snap_length = 0.4
 	apply_acceleration(accel, top_speed_ground, delta)
 	
 	if Input.is_action_pressed("jump"):
 		velocity.y = jump_force
 		if grounded:
-			# $"../SoundFX/Jump".play()
+			$SoundFX/Jump.play()
 			pass
 	
 	if grounded == grounded_prev:

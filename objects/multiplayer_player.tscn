@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://vbybs4i2jg3t"]
+[gd_scene load_steps=7 format=3 uid="uid://vbybs4i2jg3t"]
 
 [ext_resource type="Texture2D" uid="uid://baam4civsfu87" path="res://sprites/Player.png" id="1_chigq"]
 [ext_resource type="Script" uid="uid://ugoino8gynqw" path="res://scripts/multiplayer_player.gd" id="1_t02f1"]
+[ext_resource type="FontFile" uid="uid://ccpjlg8if4lrw" path="res://fonts/genesis.ttf" id="3_53gdb"]
+[ext_resource type="AudioStream" uid="uid://uef2sqxur7an" path="res://soundfx/Jump.wav" id="3_m6ijf"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6vqvp"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dgir4"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_t02f1"]
 properties/0/path = NodePath(".:position")
@@ -12,12 +14,15 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+properties/2/path = NodePath("Label3D:text")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_t02f1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_6vqvp")
+shape = SubResource("CylinderShape3D_dgir4")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
@@ -33,6 +38,14 @@ texture = ExtResource("1_chigq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 2
 text = "Player"
+font = ExtResource("3_53gdb")
+outline_size = 6
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.01
 replication_config = SubResource("SceneReplicationConfig_t02f1")
+
+[node name="SoundFX" type="Node" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer3D" parent="SoundFX"]
+stream = ExtResource("3_m6ijf")
